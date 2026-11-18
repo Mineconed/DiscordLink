@@ -64,13 +64,3 @@
 
 ## Versions
 1.8 to 1.21 (Spigot and Paper). Java 8 or newer.
-
-## Build
-You need Java 8 or newer and Maven.
-```
-mvn package
-```
-The plugin is in `target/DiscordLink.jar`.
-
-## License
-MIT. Made by Mineconed.

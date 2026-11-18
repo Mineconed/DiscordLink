@@ -1,0 +1,20 @@
+name: DiscordLink
+version: ${project.version}
+main: dk.mineconed.discordlink.DiscordLink
+author: Mineconed
+api-version: 1.13
+softdepend: [LuckPerms]
+commands:
+  link:
+    aliases: [discord]
+    usage: /link
+  unlink:
+    usage: /unlink
+  discordlink:
+    aliases: [dl]
+    usage: /discordlink <info|history|forcelink|forceunlink|sync|panel|stats|reload>
+permissions:
+  discordlink.link:
+    default: true
+  discordlink.admin:
+    default: op

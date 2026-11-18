@@ -1,0 +1,78 @@
+# DiscordLink
+# Made by Mineconed
+#
+# 1. Make a bot: https://discord.com/developers/applications
+# 2. Bot: copy the token. Invite the bot with the scopes bot and applications.commands
+#    and the permissions Manage Roles, Manage Nicknames, Send Messages and Embed Links
+# 3. Put the bot role ABOVE the roles it must give in Server Settings, Roles
+# 4. Turn on Developer Mode in Discord to copy ids (right click, Copy ID)
+
+# Language: en or da
+language: en
+
+# Name shown on the panel
+server_name: "Minecraft"
+
+bot:
+  token: "PUT_YOUR_BOT_TOKEN_HERE"
+  # Your Discord server id (slash commands show up right away)
+  guild_id: ""
+  activity: "Link with /link"
+
+link:
+  # Minutes a code works
+  code_minutes: 5
+  # How many Minecraft accounts one Discord account can link
+  max_accounts_per_discord: 1
+  # Role every linked player gets. Empty = none
+  linked_role: ""
+  # Change the Discord nickname to the Minecraft name
+  sync_nickname: false
+  nickname_format: "{player}"
+  # Players can unlink themselves
+  allow_unlink: true
+  # Unlink players who leave the Discord server
+  unlink_on_leave: false
+  # Remove the discord_to_minecraft groups on unlink
+  unlink_removes_groups: false
+  # Remind players that are not linked when they join
+  remind_on_join: true
+  # Tell everyone when someone links
+  broadcast: false
+  # Players must link before they can join (like a whitelist)
+  require_link: false
+  require_link_bypass: []
+
+# Channel for /dl panel (a message with a Link button)
+panel:
+  channel_id: ""
+
+logs:
+  # Channel for link logs. Empty = no Discord logs
+  channel_id: ""
+  # Also write every link to plugins/DiscordLink/link_log.txt
+  file: true
+  # Log role and group changes from the sync
+  role_changes: true
+  # Log wrong codes
+  wrong_codes: false
+  # Warn when the Discord account is younger than this many days (alt accounts). 0 = off
+  new_account_warning_days: 7
+
+sync:
+  enabled: true
+  # How often online players are synced (seconds)
+  seconds: 60
+  # Minecraft group gives a Discord role. Format: group=ROLE_ID
+  # You can also use a permission: some.permission=ROLE_ID
+  minecraft_to_discord: ["vip=000000000000000000", "mvp=000000000000000000"]
+  # Discord role gives a Minecraft group. Format: ROLE_ID=group
+  # Do not use the same group in both lists
+  discord_to_minecraft: ["000000000000000000=booster"]
+  add_command: "lp user {player} parent add {group}"
+  remove_command: "lp user {player} parent remove {group}"
+
+whois:
+  # Only members with Manage Server can use /whois
+  admin_only: true
+  hidden_reply: true
